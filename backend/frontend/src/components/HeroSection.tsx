@@ -2,6 +2,13 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
+  const scrollToSummarize = () => {
+    const section = document.getElementById("summarize-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       {/* Flowing background lines */}
@@ -33,7 +40,12 @@ const HeroSection = () => {
 
         {/* CTA Button */}
         <div className="mb-16">
-          <Button variant="hero" size="xl" className="animate-glow-pulse">
+          <Button
+            variant="hero"
+            size="xl"
+            className="animate-glow-pulse"
+            onClick={scrollToSummarize}
+          >
             SUMMARIZE NOW - IT'S FREE
           </Button>
         </div>

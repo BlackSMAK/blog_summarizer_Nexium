@@ -26,7 +26,12 @@ const Header = () => {
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               .
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="https://www.linkedin.com/in/syed-muhammad-ahmed-khalid-6b8611336"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
               SMAK
             </a>
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
