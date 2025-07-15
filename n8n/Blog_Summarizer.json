@@ -1,0 +1,227 @@
+{
+  "name": "Blog_Summarizer",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c220ddbe-7283-426a-ab8e-a5545cdaa188",
+              "name": "text",
+              "value": "={{$json[\"body\"][\"text\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        40
+      ],
+      "id": "363b7342-a5e2-4307-a141-a6bdfc561dfb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:5000/summarize",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=text",
+              "value": "={{$json[\"text\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        340
+      ],
+      "id": "e316cdac-0f39-41c1-b395-f92dd32b1700",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e97b59eb-f6ed-4eda-8932-5b862349f8f5",
+              "name": "summary",
+              "value": "={{$node[\"HTTP Request\"].json[\"summary\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        600,
+        40
+      ],
+      "id": "2ca4b5e6-b5fe-499c-8bb5-864b3c28492c",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  summary: $node[\"HTTP Request\"].json[\"summary\"]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        740,
+        200
+      ],
+      "id": "09bee6e0-e02f-45ab-bbfd-f1413f9c1d47",
+      "name": "Respond to Webhook",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "861761f9-8e8e-4c64-8cea-f3dd6bd6b54b",
+              "name": "debug",
+              "value": "={{$json}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        340
+      ],
+      "id": "e68e1940-bd53-4174-bddc-cd2270c0fc98",
+      "name": "TO_DEBUG"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "blog-summary",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        60
+      ],
+      "id": "5a355c1f-930f-41a3-a352-381146e8ff59",
+      "name": "Webhook",
+      "webhookId": "b5d4a449-2601-43e3-aa06-c68bb2d7afab"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa07745a-9e5e-48e2-8e3a-56d61bd777c4",
+              "name": "text",
+              "value": "={{ JSON.parse($json[\"debug\"]).body.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        40
+      ],
+      "id": "93a0743d-df1f-4265-9068-016aa802b9af",
+      "name": "Extract_From_JSON"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "TO_DEBUG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TO_DEBUG": {
+      "main": [
+        [
+          {
+            "node": "Extract_From_JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract_From_JSON": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7463e065-abda-4d34-8961-87438e95b413",
+  "meta": {
+    "instanceId": "ca323159f072b5287329f5e4608d7ca95a28eaae386ca259cc260a527ae6a98b"
+  },
+  "id": "ZOCBfQnbTIRu69Hl",
+  "tags": []
+}
