@@ -12,7 +12,7 @@ const HeroSection = () => {
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-8 animate-fade-in-up">
           <span className="text-xs font-medium text-primary">NEW</span>
           <span className="text-sm text-muted-foreground">
-            Socialsonic: AI to Grow Your Personal Brand and Business on LinkedIn
+            TLDR: AI Integrated Blog Summarizer.
           </span>
           <ArrowRight className="h-4 w-4 text-primary" />
         </div>
@@ -21,12 +21,12 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto mb-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Summarize any{" "}
-            <span className="gradient-text">Webpage</span>
+            <span className="gradient-text">Text Document</span>
             <br />
             in a click.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            TLDR This helps you summarize any piece of text into concise, easy to 
+            TLDR helps you summarize any piece of text into concise, easy to 
             digest content so you can free yourself from information overload.
           </p>
         </div>

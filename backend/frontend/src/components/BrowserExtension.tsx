@@ -8,13 +8,13 @@ const BrowserExtensionsSection = () => {
       name: "Chrome Extension",
       icon: Chrome,
       description: "Summarize any webpage with one click",
-      users: "10,000+ users"
+      users: "Coming Soon"
     },
     {
       name: "Firefox Extension", 
       icon: Globe,
       description: "Compatible with Firefox browser",
-      users: "5,000+ users"
+      users: "Coming Soon"
     },
     {
       name: "Mobile App",
@@ -32,7 +32,7 @@ const BrowserExtensionsSection = () => {
             Browser Extensions
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Use TLDR This directly in your browser for instant article summarization
+            Use TLDR directly in your browser for instant article summarization. Features Coming Soon!
           </p>
         </div>
 

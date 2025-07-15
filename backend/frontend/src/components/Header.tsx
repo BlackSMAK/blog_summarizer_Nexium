@@ -15,7 +15,7 @@ const Header = () => {
               <FileText className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold gradient-text">
-              Summarize Blogs
+              TLDR: Blog Summarizer
             </span>
           </div>
 

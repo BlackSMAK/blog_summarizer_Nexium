@@ -12,14 +12,13 @@ const Footer = () => {
     <footer className="border-t border-border/20 py-16 mt-20">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8">
-          {/* Logo & Description */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="p-2 rounded-lg bg-gradient-primary">
                 <FileText className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold gradient-text">
-                Blog Summarizer
+                TLDR: Blog Summarizer
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -49,7 +48,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 Blog Summarizer. All rights reserved.
+            © 2025 TLDR: Blog Summarizer. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
