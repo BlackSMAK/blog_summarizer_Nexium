@@ -28,7 +28,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto mb-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Summarize any{" "}
-            <span className="gradient-text">Text Document</span>
+            <span className="gradient-text">Text</span>
             <br />
             in a click.
           </h1>
