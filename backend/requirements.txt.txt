@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+transformers
+torch
+pytesseract
+pdfplumber
+pillow
+unfluff
+requests
