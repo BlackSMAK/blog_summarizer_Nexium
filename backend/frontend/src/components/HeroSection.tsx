@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="relative py-20 md:py-32 overflow-hidden">
       {/* Flowing background lines */}
       <div className="flow-lines"></div>
-      
+
       <div className="container mx-auto px-4 text-center relative z-10">
         {/* Promotional Banner */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-8 animate-fade-in-up">
@@ -38,7 +38,8 @@ const HeroSection = () => {
           </Button>
         </div>
 
-        {/* Video Preview Placeholder */}
+        {/* Video Preview Placeholder (Commented Out - add later if needed) */}
+        {/*
         <div className="max-w-4xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden glass border border-border/20 p-8 animate-float">
             <div className="aspect-video bg-gradient-accent rounded-lg flex items-center justify-center">
@@ -51,6 +52,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+        */}
       </div>
     </section>
   );

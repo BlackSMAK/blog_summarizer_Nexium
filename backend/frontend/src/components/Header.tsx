@@ -10,7 +10,6 @@ const Header = () => {
     <header className="relative z-10 border-b border-border/20 glass">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-lg bg-gradient-primary">
               <FileText className="h-6 w-6 text-white" />
@@ -20,7 +19,6 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
               .

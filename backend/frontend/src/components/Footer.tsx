@@ -19,15 +19,14 @@ const Footer = () => {
                 <FileText className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold gradient-text">
-                TLDR This
+                Blog Summarizer
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Summarize any webpage in a click. Free yourself from information overload.
+              Summarize any text in a click. Free yourself from information overload.
             </p>
           </div>
 
-          {/* Footer Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="font-semibold mb-4">{category}</h3>
@@ -50,7 +49,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 TLDR This. All rights reserved.
+            © 2025 Blog Summarizer. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
