@@ -1,25 +1,15 @@
-import mammoth from "mammoth";
-import Tesseract from "tesseract.js";
-import pdfParse from "pdf-parse";
+// src/lib/extractFromFile.ts
+import axios from "axios";
 
-export async function extractTextFromFile(file: File): Promise<string> {
-  const buffer = await file.arrayBuffer();
-  const uint8 = new Uint8Array(buffer);
+export const extractFromFile = async (file: File): Promise<string> => {
+  const formData = new FormData();
+  formData.append("file", file);
 
-  if (file.name.endsWith(".pdf")) {
-    const data = await pdfParse(uint8);
-    return data.text;
-  }
+  const response = await axios.post("/api/ocr", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 
-  if (file.name.endsWith(".docx")) {
-    const result = await mammoth.extractRawText({ arrayBuffer: buffer });
-    return result.value;
-  }
-
-  if (file.type.startsWith("image/")) {
-    const { data: { text } } = await Tesseract.recognize(file, "eng");
-    return text;
-  }
-
-  return "";
-}
+  return (response.data as { text?: string })?.text || "";
+};

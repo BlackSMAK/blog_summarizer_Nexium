@@ -4,8 +4,8 @@ import { Card } from "./ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Textarea } from "./ui/textarea";
 import { Upload, Type } from "lucide-react";
-import axios from "axios";
 import { summarizeText } from "@/lib/summarizeText";
+import { extractFromFile } from "@/lib/extractFromFile";
 
 const SummarizeSection = () => {
   const [activeTab, setActiveTab] = useState("text");
@@ -14,17 +14,6 @@ const SummarizeSection = () => {
   const [summary, setSummary] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const extractTextFromFile = async (file: File): Promise<string> => {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const res = await axios.post("/api/ocr", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-
-    return (res.data as { text?: string })?.text || "";
-  };
 
   const handleSummarize = async () => {
     setLoading(true);
@@ -39,7 +28,7 @@ const SummarizeSection = () => {
         contentToSummarize = inputText.trim();
       } else if (activeTab === "upload") {
         if (!selectedFile) throw new Error("Please upload a file.");
-        const extracted = await extractTextFromFile(selectedFile);
+        const extracted = await extractFromFile(selectedFile);
         if (!extracted) throw new Error("Could not extract text from file.");
         contentToSummarize = extracted;
       } else {
@@ -95,7 +84,7 @@ const SummarizeSection = () => {
                 <div className="border-2 border-dashed border-border/50 rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
                   <input
                     type="file"
-                    accept="image/*,application/pdf"
+                    accept=".docx,application/pdf,image/*"
                     onChange={(e) => {
                       if (e.target.files?.[0]) {
                         setSelectedFile(e.target.files[0]);
@@ -109,7 +98,7 @@ const SummarizeSection = () => {
                   )}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Upload an image or PDF. We'll extract the text and summarize it.
+                  Upload a DOCX, PDF, or image. We'll extract the text and summarize it.
                 </p>
               </TabsContent>
 
